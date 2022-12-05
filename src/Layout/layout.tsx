@@ -54,10 +54,10 @@ export default function Layout({ children, commonHeader }: LayoutProps) {
         </Box>
 
       </Drawer>
-      <Box className="wrapper bg-white px-8 py-20">
-        {commonHeader}
+      <Box className="mt-20">
+       <div className="bg-gray-200"> {commonHeader}</div>
       <Box
-      
+       className="wrapper  w-full"
         component="main"
         sx={{ flexGrow: 1, p: 10 }}
       >
