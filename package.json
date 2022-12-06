@@ -64,12 +64,7 @@
 
     "typescript": "4.9.3",
 
-    "yup": "^0.32.11",
-    "@emotion/react": "latest",
-    "@emotion/styled": "latest",
-    "@mui/joy": "latest",
-    "react-toastify": "^9.0.8",
-    "lodash": "4.17.21"
+    "yup": "^0.32.11"
 
   },
 
