@@ -3,16 +3,20 @@ import { Grid } from '@mui/material';
 import { FormInputText } from '../../../src/components/shared/formInputs/FormInputText';
 import { PhoneNumber } from '../../../src/components/shared/formInputs/PhoneNumber';
 import type { SubmitHandler } from 'react-hook-form';
-import { FormProvider, useForm } from 'react-hook-form';
+import { FormProvider , useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { leadFormSchema } from '../../../src/components/shared/leadFormValidation';
 import FormControl from '@mui/material/FormControl';
 import {Button} from '@mui/material';
 import FormBasicDatePicker from '../../../src/components/shared/formInputs/FormBasicDatePicker';
-import LeadAddHeader from './header';
+import LeadEditHeader from './editHeader';
 import Layout from '../../../src/Layout/layout';
+import { useRouter } from 'next/router';
 
-const LeadForm = () => {
+
+const EditLeadForm = () => {
+
+
     const defaultValues = {
         firstName : '',
         middleName : '',
@@ -20,7 +24,9 @@ const LeadForm = () => {
         email : '',
         phoneNumber : '',
     }
-
+  
+    const router = useRouter();
+    const { leadId } = router.query;
     const methods = useForm<any>({
         mode: 'onChange',
         defaultValues,
@@ -30,15 +36,16 @@ const LeadForm = () => {
     const { control, formState , getValues} = methods;
     const { errors } = formState;
 
-    async function handleSaveProduct() {
-        console.log('getValues',getValues())
+    const handleUpdateLead = async ()=>{
+        console.log('getValues',getValues)
+
     }
 
 
   return (
-        <>
+        <> 
         <FormProvider {...methods}>
-        <Layout commonHeader={<LeadAddHeader/>}>
+        <Layout commonHeader={<LeadEditHeader/>}>
             <Box className='container mx-auto '>
                     <Grid container spacing={3}>
                         <Grid item xs={4}>
@@ -103,7 +110,7 @@ const LeadForm = () => {
                     </Grid>
 
                     <Grid item className='py-4'>
-                        <Button onClick={handleSaveProduct} variant="contained">
+                        <Button onClick={handleUpdateLead} variant="contained">
                             Submit
                         </Button>
                     </Grid>
@@ -114,4 +121,4 @@ const LeadForm = () => {
   )
 }
 
-export default LeadForm
+export default EditLeadForm
