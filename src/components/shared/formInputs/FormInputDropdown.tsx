@@ -6,7 +6,7 @@ import { Controller } from 'react-hook-form';
 
 const FormInputDropdown = ({
   name,
-  control,
+  control, 
   label,
   data,
   errors,

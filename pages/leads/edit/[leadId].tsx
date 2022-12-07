@@ -6,8 +6,8 @@ const LeadId = () => {
   return (
     <React.Fragment>
       <EditLeadForm />
-    </React.Fragment>
-  );
+    </React.Fragment> 
+  ); 
 };
 
 export default LeadId;

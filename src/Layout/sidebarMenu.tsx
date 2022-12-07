@@ -9,7 +9,7 @@ export const  mainMenu = [
           name: 'Lead',
           url: '#',
         },
-        {
+        { 
           id: 'lead1',
           name: 'Add Lead',
           url: '#',

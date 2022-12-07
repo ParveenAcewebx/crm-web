@@ -9,7 +9,7 @@ const FormInputTagMultiSelect = ({
   control,
   label,
   className,
-  data,
+  data, 
   required,
   errors,
 }: any) => {

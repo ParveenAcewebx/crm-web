@@ -8,7 +8,7 @@ export function errorMsg(text: string) {
   });
 }
 
-export function successMsg(text: string) {
+export function successMsg(text: string) { 
   toast.success(text, {
     position: toast.POSITION.TOP_RIGHT,
   });

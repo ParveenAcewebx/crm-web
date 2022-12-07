@@ -8,7 +8,7 @@ import { Controller } from 'react-hook-form';
 
 const FormInputRadio = ({
   name,
-  control,
+  control, 
   label,
   className,
   data,
