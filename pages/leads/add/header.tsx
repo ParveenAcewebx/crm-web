@@ -12,7 +12,6 @@ export default function LeadAddHeader() {
   const {  getValues, formState } = methods;
   const router  = useRouter()
   const { isValid, dirtyFields } = formState;
-  console.log(getValues(), 'getValues')
   const handleSaveLead = () => {
     successMsg('Lead successfully added')
     router.push('/leads/lists')

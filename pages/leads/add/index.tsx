@@ -22,9 +22,18 @@ import TravelInfo from "../../../src/components/shared/leadsForm/travelInfo";
 const LeadForm = () => {
   const defaultValues = {
     firstName: "",
-    lastName: "",
+    lastName: "", 
     email: "",
     phoneNumber: "",
+    alternatePhone: "",
+    country: "",
+    arrivalDate: "",
+    arrivalTime: "",
+    leadType: "",
+    departureDate: "",
+    dropLocation: "",
+    numberOftourist: "",
+    carType: "",
   };
 
   const methods = useForm<any>({
@@ -33,12 +42,6 @@ const LeadForm = () => {
     resolver: yupResolver(leadFormSchema),
   });
 
-  const { control, formState, getValues } = methods;
-  const { errors } = formState;
-
-  async function handleSaveProduct() {
-    console.log("getValues", getValues());
-  }
   const [value, setValue] = useState("1");
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -64,8 +67,12 @@ const LeadForm = () => {
               <TabPanel value="1">
                 <BasicInfo />
               </TabPanel>
-              <TabPanel value="2"><ContactInfo/></TabPanel>
-              <TabPanel value="3"><TravelInfo/></TabPanel>
+              <TabPanel value="2">
+                <ContactInfo />
+              </TabPanel>
+              <TabPanel value="3">
+                <TravelInfo />
+              </TabPanel>
             </TabContext>
           </Box>
         </Layout>

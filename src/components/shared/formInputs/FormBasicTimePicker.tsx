@@ -14,8 +14,7 @@ const FormBasicTimePicker = ({
   label,
 }: any) => {
 
-  // const [value, setValue] = React.useState<any | null>(null);
-  // console.log('value',value)
+
   return (
     <>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -29,7 +28,6 @@ const FormBasicTimePicker = ({
                 value={value || null}
                 onChange={(newValue) =>  onChange(newValue.format('HH:mm:ss'))}
                 renderInput={(params) => {
-                  console.log('params',params)
                   return (
                   <TextField onKeyDown={(e) => e.preventDefault()} {...params} />
                   )

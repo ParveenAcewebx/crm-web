@@ -11,6 +11,8 @@ const FormInputDropdown = ({
   data,
   errors,
   required,
+  className,
+  defaultValue,
 }: any) => {
   const generateSelectOptions = () => {
     return data.map((option: any) => (
@@ -24,6 +26,7 @@ const FormInputDropdown = ({
     <Controller
       name={name}
       control={control}
+      defaultValue={defaultValue}
       render={({ field }: any) => (
         <TextField
           {...field}

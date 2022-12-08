@@ -41,7 +41,8 @@ export default function LoginPage() {
       data.email === "test12@gmail.com" ||
       data.password.length === "test123456"
     ) {
-      authgetValue(data)
+      localStorage.setItem('userDetailsStorage', JSON.stringify(data));
+      // authgetValue(data)
       successMsg("You are login successfully");
       route.push("/leads/lists/");
     } else {

@@ -1,14 +1,7 @@
 import Box from "@mui/material/Box";
-import { Grid } from "@mui/material";
-import { FormInputText } from "../shared/formInputs/FormInputText";
-import { PhoneNumber } from "../shared/formInputs/PhoneNumber";
-import type { SubmitHandler } from "react-hook-form";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { leadFormSchema } from "../shared/leadFormValidation";
-import FormControl from "@mui/material/FormControl";
-import { Button } from "@mui/material";
-import FormBasicDatePicker from "../shared/formInputs/FormBasicDatePicker";
 import LeadEditHeader from "./editHeader";
 import Layout from "../../Layout/layout";
 import { useRouter } from "next/router";
@@ -19,26 +12,9 @@ import TabPanel from "@mui/lab/TabPanel";
 import BasicInfo from "../shared/leadsForm/basicInfo";
 import ContactInfo from "../shared/leadsForm/contactInfo";
 import TravelInfo from "../shared/leadsForm/travelInfo";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { errorMsg } from "../shared/toaster-msg/error-msg";
+import { useState } from "react";
 const EditLeadForm = () => {
-  const [getData, setGetData] = useState();
-  const { register, handleSubmit, reset } = useForm();
-  const editObj= {
-    firstName: "Test",
-    lastName: "Test2",
-    email: "test@gmail.com",
-    phoneNumber: "123456",
-    alternatePhone:"123456789",
-    country:"country",
-    arrivalDate:"2022-12-08",
-    arrivalTime:"12:05",
-    leadType:"Facebook",
-    
-
-  }
-
+  
   const defaultValues = {
     firstName: "",
     lastName: "",
@@ -49,39 +25,19 @@ const EditLeadForm = () => {
     arrivalDate:"",
     arrivalTime:"",
     leadType:"",
+    departureDate:"",
+    dropLocation:"",
+    numberOftourist:"",
+    carType:""
   };
 
-  const router = useRouter();
-  const { leadId } = router.query;
   const methods = useForm<any>({
     mode: "onChange",
     defaultValues,
     resolver: yupResolver(leadFormSchema),
   });
 
-  const { getValues } = methods;
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `http://jsonplaceholder.typicode.com/posts/${leadId}`
-        );
-        setGetData(response.data);
-      } catch (err: any) {
-        errorMsg(err.message);
-      }
-
-    };
-    fetchData();
-    reset(editObj)
-  }, [leadId]);
-
-  const handleUpdateLead = async () => {
-    console.log("getValues", getValues);
-  };
   const [value, setValue] = useState("1");
-
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };

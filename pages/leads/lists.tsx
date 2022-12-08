@@ -20,11 +20,8 @@ const Leadlists = () => {
       const response = await axios.get(
         "http://jsonplaceholder.typicode.com/users"
       );
-      console.log(response, 'rfesese')
       setGetData(response.data);
-    } catch (err: any) {
-      console.log("err", err.message);
-    }
+    } catch (err: any) {}
   };
 
   useEffect(() => {

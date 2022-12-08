@@ -11,7 +11,7 @@ const source = [
   { label: 'Website', value: 'website' },
   { label: 'Home Adviser', value: 'homeAdviser' }
 ];
-
+ 
 const ContactInfo = () => {
   
   const methods = useFormContext();
@@ -42,6 +42,18 @@ const ContactInfo = () => {
                       id="phoneNumber"
                       variant="outlined"
                   />
+              </Grid>
+
+              <Grid item xs={6}>
+                <PhoneNumber
+                  name="alternatePhone"
+                  control={control}
+                  label="Alternate Phone Number"
+                  errors={errors}
+                  required={true}
+                  id="phoneNumber"
+                  variant="outlined"
+                />
               </Grid>
 
               <Grid item xs={6}>

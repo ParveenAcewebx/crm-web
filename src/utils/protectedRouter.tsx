@@ -7,7 +7,6 @@ function ProtectedRouter({ children }: { children: JSX.Element }) {
   const { isLogin } = React.useContext(LoginContext) as LoginContextTye;
   const [loading, setLoading] = useState<any>(true);
   const router = useRouter();
-
   useEffect(() => {
     const checkUser = async () => { 
       if (await isLogin()) {
@@ -19,7 +18,7 @@ function ProtectedRouter({ children }: { children: JSX.Element }) {
       }
     };
     checkUser();
-  }, []);
+  }, [isLogin]);
 
   if (loading) return <div>Loading</div>;
   return children;

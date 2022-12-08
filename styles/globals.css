@@ -16,6 +16,10 @@ a {
 * {
   box-sizing: border-box;
 }
+button {
+  text-transform: capitalize !important;
+  font-size: 17px !important;
+}
 
 @media (prefers-color-scheme: dark) {
   html {

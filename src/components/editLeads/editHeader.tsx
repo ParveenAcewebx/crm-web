@@ -1,25 +1,57 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import { useFormContext } from "react-hook-form";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { Button } from "@mui/material";
-import { successMsg } from "../shared/toaster-msg/error-msg";
+import { errorMsg, successMsg } from "../shared/toaster-msg/error-msg";
+import { useEffect , useState } from "react";
+import axios from "axios";
+import _ from "lodash";
 
 const LeadEditHeader = () => {
   const methods = useFormContext();
   const router = useRouter();
-  const { formState, getValues, reset } = methods;
+  const {leadId} = router.query
+  const { formState, reset } = methods;
   const { isValid, dirtyFields } = formState;
-  const defaultValues = {
-    firstName: "",
-    middleName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
+  const [getData, setGetData] = useState();
+
+  const editObj= {
+    firstName: "Test",
+    lastName: "Test2",
+    email: "test@gmail.com",
+    phoneNumber: "(503) 488-6956",
+    alternatePhone:"123456789",
+    country:"country",
+    arrivalDate:"2022-12-08",
+    arrivalTime:"03:05",
+    leadType:"facebook",
+    departureDate:"2022-12-12",
+    dropLocation:"Brampton",
+    numberOftourist:"12",
+    city:"demo",
+    postalCode:"12345",
+    state:"demo12",
+    carType:"sudan"
+  }
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        `http://jsonplaceholder.typicode.com/posts/${leadId}`
+      );
+      reset(editObj);
+      setGetData(response.data);
+    } catch (err: any) {
+      errorMsg(err.message);
+    }
   };
+  useEffect(()=>{
+    if(leadId !== undefined){
+      fetchData();
+    }
+  },[leadId])
 
   const updatedLead = () => {
-    console.log('updated', getValues() )
     successMsg("Lead successfully updated");
     router.push("/leads/lists");
   };
@@ -30,7 +62,7 @@ const LeadEditHeader = () => {
         <Button
           variant="contained"
           onClick={updatedLead}
-          disabled={!dirtyFields || !isValid}
+          disabled={_.isEmpty(dirtyFields) || !isValid}
         >
           Save
         </Button>

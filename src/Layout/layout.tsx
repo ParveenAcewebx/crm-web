@@ -24,7 +24,6 @@ export default function Layout({ children, commonHeader }: LayoutProps) {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <TopBar />
-
       <Drawer
         variant="permanent"
         sx={{
