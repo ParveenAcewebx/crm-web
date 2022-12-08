@@ -13,7 +13,7 @@ import LeadAddHeader from './header';
 import Layout from '../../../src/Layout/layout';
 
 const LeadForm = () => {
-    const defaultValues = {
+    const defaultValues = { 
         firstName : '',
         middleName : '',
         lastName : '',

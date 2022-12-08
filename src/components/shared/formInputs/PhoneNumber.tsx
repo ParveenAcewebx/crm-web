@@ -9,7 +9,7 @@ export const PhoneNumber = ({
   id,
   name,
   control,
-  required,
+  required, 
 }: any) => {
   return (
     <>

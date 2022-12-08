@@ -8,7 +8,7 @@ export const FormInputText = ({
   name,
   control,
   label,
-  className,
+  className, 
   errors,
   inputType,
   required,

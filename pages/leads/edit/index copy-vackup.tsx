@@ -1,8 +1,8 @@
+import * as React from 'react';
 import Box from '@mui/material/Box';
 import { Grid } from '@mui/material';
 import { FormInputText } from '../../../src/components/shared/formInputs/FormInputText';
 import { PhoneNumber } from '../../../src/components/shared/formInputs/PhoneNumber';
-import type { SubmitHandler } from 'react-hook-form';
 import { FormProvider , useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { leadFormSchema } from '../../../src/components/shared/leadFormValidation';
@@ -10,11 +10,28 @@ import FormControl from '@mui/material/FormControl';
 import {Button} from '@mui/material';
 import FormBasicDatePicker from '../../../src/components/shared/formInputs/FormBasicDatePicker';
 import LeadEditHeader from './editHeader';
-import Layout from '../../../src/Layout/layout'; 
+import Layout from '../../../src/Layout/layout';
 import { useRouter } from 'next/router';
+import FormInputDropdown from '../../../src/components/shared/formInputs/FormInputDropdown';
+import FormBasicTimePicker from '../../../src/components/shared/formInputs/FormBasicTimePicker';
+import TextField from '@mui/material/TextField';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 
+const source = [
+    { label: 'Phone Number', value: 'phoneNumber' },
+    { label: 'Website', value: 'website' },
+    { label: 'Home Adviser', value: 'homeAdviser' }
+  ];
 
 const EditLeadForm = () => {
+
+    const [value, setValue] = React.useState<any | null>();
+
+    const handleChange = (newValue: any | null) => {
+        setValue(newValue);
+    };
 
 
     const defaultValues = {
@@ -23,6 +40,8 @@ const EditLeadForm = () => {
         lastName : '',
         email : '',
         phoneNumber : '',
+        arrivalDate:'',
+        source:'',
     }
   
     const router = useRouter();
@@ -96,14 +115,24 @@ const EditLeadForm = () => {
                             />
                         </Grid>
                         <Grid item xs={4}>
+                            <FormInputDropdown
+                                name={'source'}
+                                control={control}
+                                label={'Source'}
+                                data={source}
+                                required={true}
+                                errors={errors}
+                            />
+                            </Grid>
+                        <Grid item xs={4}>
                             <FormControl fullWidth>
                                 <FormBasicDatePicker
-                                name="dob"
-                                control={control}
-                                errors={errors}
-                                required={true}
-                                label="Date of Birth"
-                                inputFormat="YYYY-MM-DD"
+                                    name="arrivalDate"
+                                    control={control}
+                                    errors={errors}
+                                    required={true}
+                                    label="Arrival Date"
+                                    inputFormat="YYYY-MM-DD"
                                 />
                             </FormControl>
                         </Grid>

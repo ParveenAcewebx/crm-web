@@ -16,8 +16,11 @@ import {
   successMsg,
 } from "../../src/components/shared/toaster-msg/error-msg";
 import { useRouter } from "next/router";
+import { LoginContext } from "../../src/contexts/AuthContext";
+import { LoginContextTye } from "../../src/types/auth";
 
 export default function LoginPage() {
+  const { authgetValue } = React.useContext(LoginContext) as LoginContextTye;
   const route = useRouter();
 
   const defaultValues = {
@@ -34,10 +37,11 @@ export default function LoginPage() {
   const { isValid, dirtyFields, errors } = formState;
 
   const onSubmit: SubmitHandler<any> = async (data, e: any) => {
-    if (
+    if ( 
       data.email === "test12@gmail.com" ||
       data.password.length === "test123456"
     ) {
+      authgetValue(data)
       successMsg("You are login successfully");
       route.push("/leads/lists/");
     } else {

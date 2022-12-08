@@ -7,6 +7,6 @@ export default function LeadAddHeader() {
     >
       <Typography variant="h6">{'Leads'}</Typography>
      
-    </Box>
+    </Box> 
   );
 }

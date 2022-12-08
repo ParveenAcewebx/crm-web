@@ -10,7 +10,7 @@ const LeadEditHeader = () => {
   const { formState, getValues, reset } = methods;
   const { isValid, dirtyFields } = formState;
   
-  return (
+  return ( 
     <Box
     sx={{ display: 'flex', justifyContent: 'space-between' }}
   >
