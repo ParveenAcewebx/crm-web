@@ -5,10 +5,7 @@ export const leadFormSchema = yup.object().shape({
     .string()
     .required('You must enter a  first name')
     .min(3, 'The  first name must be at least 3 characters'),
-  middleName: yup
-    .string()
-    .required('You must enter a  middle name')
-    .min(3, 'The  first name must be at least 3 characters'),
+
   lastName: yup 
     .string()
     .required('You must enter a last name')

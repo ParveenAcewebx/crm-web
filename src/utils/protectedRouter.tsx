@@ -13,7 +13,9 @@ function ProtectedRouter({ children }: { children: JSX.Element }) {
       if (await isLogin()) {
         setLoading(false);
       } else {
-        router.push("/login");
+        // router.push("/login");
+        setLoading(false);
+
       }
     };
     checkUser();

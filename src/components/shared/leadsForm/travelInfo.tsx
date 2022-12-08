@@ -9,7 +9,7 @@ import FormInputDropdown from '../formInputs/FormInputDropdown';
 
 const vichleType = [
   { label: 'Luxury Cars', value: 'phoneNumber' },
-  { label: 'Economy Cars', value: 'economyCars' }, 
+  { label: 'Economy Cars', value: 'economyCars' },
   { label: 'SUV / MUV Vehicles', value: 'suv' },
   { label: 'Coaches', value: 'coaches' }
 ]
@@ -41,6 +41,7 @@ const TravelInfo = () => {
                     required={true}
                     errors={errors}
                     inputFormat={'YYYY-MM-DD'}
+                    className="w-full"
                 />
               </Grid>
               <Grid item xs={6}>

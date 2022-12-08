@@ -1,6 +1,6 @@
 import React from 'react';
 
-import EditLeadForm from '.';
+import EditLeadForm from '../../../src/components/editLeads';
 
 const LeadId = () => {
   return (

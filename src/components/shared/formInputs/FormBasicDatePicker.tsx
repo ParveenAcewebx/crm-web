@@ -11,13 +11,15 @@ const FormBasicDatePicker = ({
   control,
   label,
   inputFormat,
+  className,
+  defaultValue
 }: any) => {
   return (
     <>
       <Controller
         name={name}
         control={control}
-        defaultValue={''}
+        defaultValue={defaultValue}
         render={({ field: { onChange, value } }) => (
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
@@ -26,7 +28,7 @@ const FormBasicDatePicker = ({
               value={value || null}
               onChange={(newValue) => onChange(newValue.format('YYYY-MM-DD'))}
               renderInput={(params) => (
-                <TextField onKeyDown={(e) => e.preventDefault()} {...params} />
+                <TextField onKeyDown={(e) => e.preventDefault()} {...params} className={className}/>
               )}
             />
           </LocalizationProvider>

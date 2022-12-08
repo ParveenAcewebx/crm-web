@@ -9,7 +9,7 @@ import moment from 'moment';
 
 const status = [
     { label: 'New', value: 'new' },
-    { label: 'In Progress', value: 'inProgress' }, 
+    { label: 'In Progress', value: 'inProgress' },
     { label: 'Closed', value: 'closed' },
     { label: 'Lost', value: 'lost' }
   ];

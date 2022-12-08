@@ -1,27 +1,14 @@
 export const  mainMenu = [
 
-    {
-      id: 'lead',
-      name: 'Lead List',
-      items: [
-        {
-          id: 'allLead',
-          name: 'Lead',
-          url: '#',
-        },
-        { 
-          id: 'lead1',
-          name: 'Add Lead',
-          url: '#',
-        },
-        
-      ],
-    },
-    {
-      id: 'lead',
-      name: 'Lead 2',
-    }
-    
-  ];
-
-    
+  {
+    id: 'lead',
+    name: 'Lead List',
+    url:"/leads/lists"
+  },
+  {
+    id: 'lead',
+    name: 'Lead Add',
+    url :   "/leads/add"
+  }
+  
+];
