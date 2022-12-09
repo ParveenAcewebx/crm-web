@@ -9,8 +9,9 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
-import TopBar from "./topBar"; 
+import TopBar from "./topBar";
 import { mainMenu } from "./sidebarMenu";
+import Link from "next/link";
 
 const drawerWidth = 240;
 
@@ -23,7 +24,6 @@ export default function Layout({ children, commonHeader }: LayoutProps) {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <TopBar />
-
       <Drawer
         variant="permanent"
         sx={{
@@ -41,21 +41,21 @@ export default function Layout({ children, commonHeader }: LayoutProps) {
           <List>
             {mainMenu.map((item) => (
               <ListItem key={item.name} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    <MailIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={item.name} />
-                </ListItemButton>
+                <Link href={`${item.url}`}>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <MailIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={item.name} />
+                  </ListItemButton>
+                </Link>
               </ListItem>
             ))}
           </List>
         </Box>
       </Drawer>
       <Box className="w-full">
-        <div className="bg-gray-200 mt-20 w-full py-4 px-4">
-          {commonHeader}
-        </div>
+        <div className="bg-gray-200 mt-20 w-full py-4 px-4">{commonHeader}</div>
         <Box
           className="wrapper bg-white w-full"
           component="main"

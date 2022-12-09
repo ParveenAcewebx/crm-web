@@ -7,9 +7,7 @@ const ViewHeader = () => {
     <div>
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }} >
             <Typography variant="h6">{'View Leads'}</Typography>
-        </Box>
-        <Box className="mt-5">
-        <Button variant="contained" onClick={() => Router.back()}>Back</Button>
+            <Button variant="contained" onClick={() => Router.back()}>Back</Button>
         </Box>
     </div>
   )

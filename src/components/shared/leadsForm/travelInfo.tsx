@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import { Grid } from '@mui/material';
 import { FormInputText } from '../formInputs/FormInputText';
@@ -6,46 +6,61 @@ import { FormProvider } from 'react-hook-form';
 import { useFormContext } from 'react-hook-form';
 import FormBasicDatePicker from '../formInputs/FormBasicDatePicker';
 import FormInputDropdown from '../formInputs/FormInputDropdown';
+import FormBasicTimePicker from '../formInputs/FormBasicTimePicker';
 
-const vichleType = [
-  { label: 'Luxury Cars', value: 'phoneNumber' },
-  { label: 'Economy Cars', value: 'economyCars' }, 
-  { label: 'SUV / MUV Vehicles', value: 'suv' },
-  { label: 'Coaches', value: 'coaches' }
-]
-
-const status = [
-  { label: 'Active', value: 'active' },
-  { label: 'Process', value: 'process' },
-  { label: 'Failed', value: 'failed' },
-  { label: 'Completed', value: 'completed' }
-]
-
-
+const carType = [
+  { label: "Sudan", value: "sudan" },
+  { label: "SUV", value: "suv" },
+];
 
 const TravelInfo = () => {
 
+  const [time, setTime] = React.useState<any>(null);
   const methods = useFormContext();
-  const { control, formState } = methods;
+  const { control, formState , setValue} = methods;
   const { errors } = formState;
+  const handleChange = (newValue: any | null) => {
+    setTime(newValue);
+  };
+  useEffect(() => {
+    if (time !== null) {
+      setValue("arrivalTime", time.format("HH:mm"));
+    }
+  }, [time]);
+
+  
   return (
     <>
       <FormProvider {...methods}>
         <Box className='container mx-auto '>
           <Grid container spacing={3}>
-              <Grid item xs={6}>
-                <FormBasicDatePicker
-                    name="arrivalDate"
-                    control={control}
-                    label="Arrival Date"
-                    required={true}
-                    errors={errors}
-                    inputFormat={'YYYY-MM-DD'}
-                />
-              </Grid>
+          <Grid item xs={6}>
+              <FormBasicDatePicker
+                name="arrivalDate"
+                control={control}
+                label="Arrival Date"
+                required={true}
+                errors={errors}
+                inputFormat={"YYYY-MM-DD"}
+                defaultValue=""
+                className="w-full"
+              />
+            </Grid>
+
+            <Grid item xs={6}>
+              <FormBasicTimePicker
+                name={"arrivalTime"}
+                control={control}
+                label={"Arrival Time"}
+                required={true}
+                errors={errors}
+                className="w-full"
+              />
+            </Grid>
+
               <Grid item xs={6}>
                 <FormInputText
-                    name="noOfPassanger"
+                    name="numberOftourist"
                     control={control}
                     label="No of Passanger"
                     errors={errors}
@@ -55,10 +70,10 @@ const TravelInfo = () => {
 
               <Grid item xs={6}>
                 <FormInputDropdown
-                    name={'vichleType'}
+                    name={'carType'}
                     control={control}
-                    label={'Vichle Type'}
-                    data={vichleType}
+                    label={'Car Type'}
+                    data={carType}
                     required={true}
                     errors={errors}
                 />
@@ -66,7 +81,7 @@ const TravelInfo = () => {
 
               <Grid item xs={6}>
                 <FormInputText
-                    name="pickUpLocation"
+                    name="dropLocation"
                     control={control}
                     label="Pick up Location"
                     errors={errors}
@@ -75,26 +90,38 @@ const TravelInfo = () => {
               </Grid>
 
               <Grid item xs={6}>
-                <FormInputText
-                    name="destination"
-                    control={control}
-                    label="Destination Location"
-                    errors={errors}
-                    required={true}
-                />
-              </Grid>
+              <FormBasicDatePicker
+                name="departureDate"
+                control={control}
+                label="Departure Date"
+                required={true}
+                errors={errors}
+                inputFormat={"YYYY-MM-DD"}
+                className="w-full"
+              />
+            </Grid>
 
-              <Grid item xs={6}>
-                <FormInputDropdown
-                    name={'status'}
-                    control={control}
-                    label={'Status'}
-                    data={status}
-                    required={true}
-                    errors={errors}
-                />
-              </Grid>
-          
+            <Grid item xs={6}>
+              <FormInputText
+                name="dropLocation"
+                control={control}
+                label="Drop Location"
+                errors={errors}
+                required={true}
+              />
+            </Grid>
+
+            <Grid item xs={6}>
+              <FormInputDropdown
+                name={"carType"}
+                control={control}
+                label={"Car Type"}
+                data={carType}
+                required={true}
+                errors={errors}
+              />
+            </Grid>
+
           </Grid>
         </Box>
         </FormProvider>

@@ -1,4 +1,4 @@
-import { createContext, useMemo, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 
 import { LoginContextTye } from "../types/auth";
@@ -9,7 +9,7 @@ function AuthContextProvider({
   children,
   value,
 }: {
-  children: ReactNode; 
+  children: ReactNode;
   value: {
     [key: string]: any;
   };
@@ -17,20 +17,26 @@ function AuthContextProvider({
   const [authValue, setAuthValue] = useState<any>({});
 
   const authgetValue = (data: any) => {
-    setAuthValue(data)
+    setAuthValue(data);
   };
 
-  const logOut = ()=>{
-    console.log('authValueauthValue',authValue);
-    setAuthValue({})
-  }
+  const logOut = () => {
+    localStorage.removeItem("userDetailsStorage");
+    setAuthValue({});
+  };
+
+
 
   const isLogin = () => {
-    if( Object.keys(authValue).length > 0 ){
-      return true;
-    }else{
-      return false;}
-  }
+    if (typeof window !== "undefined") {
+      const userDetails = localStorage.getItem("userDetailsStorage") || "";
+      if (userDetails !== "") {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  };
 
   const contextValue = useMemo(
     () => ({
@@ -38,22 +44,20 @@ function AuthContextProvider({
       authgetValue,
       logOut,
       isLogin,
-      ...value
+      ...value,
     }),
-    [value,authValue, isLogin]
+    [value, authValue]
   );
 
   return (
     <LoginContext.Provider value={contextValue}>
-        {children}
+      {children}
     </LoginContext.Provider>
-  )
+  );
 }
 
 AuthContextProvider.defaultProps = {
-    value: {},
-  };
-  
-  
+  value: {},
+};
 
-export default AuthContextProvider
+export default AuthContextProvider;

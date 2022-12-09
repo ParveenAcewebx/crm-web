@@ -6,15 +6,13 @@ import { LoginContext } from "../contexts/AuthContext";
 import { LoginContextTye } from "../types/auth";
 import * as React from "react";
 import { Box, Stack } from "@mui/system";
-import { Button } from "@mui/material";
 import { successMsg } from "../components/shared/toaster-msg/error-msg";
 import { useRouter } from "next/router"; 
 
 export default function TopBar() {
-  const authContext = React.useContext(LoginContext);
-  const { authValue, logOut } = React.useContext(LoginContext) as LoginContextTye;
+  const { logOut } = React.useContext(LoginContext) as LoginContextTye;
   const route = useRouter()
-  
+  const authValue = JSON.parse(localStorage.getItem('userDetailsStorage') || '{}');
   const SignOut =()=> {
     logOut();
     successMsg('you are successfully logout')

@@ -7,5 +7,6 @@ export interface loginForm {
 export type LoginContextTye ={
     authgetValue(data:loginForm):any;
     authValue:loginForm;
-    logOut():any 
+    logOut():any;
+    isLogin():any 
 }

@@ -1,6 +1,7 @@
 import MuiPhoneNumber from 'material-ui-phone-number';
 import React from 'react';
 import { Controller } from 'react-hook-form';
+import { FormInputProps } from './FormInputProps';
 
 
 export const PhoneNumber = ({
@@ -10,7 +11,7 @@ export const PhoneNumber = ({
   name,
   control,
   required, 
-}: any) => {
+}: FormInputProps) => {
   return (
     <>
       <Controller

@@ -1,5 +1,5 @@
 import React from 'react'
-import LeadView from '.'
+import LeadView from '../../../src/components/viewLeads'
 const LeadsView = () => {
   return (
     <div>

@@ -45,6 +45,18 @@ const ContactInfo = () => {
               </Grid>
 
               <Grid item xs={6}>
+                <PhoneNumber
+                  name="alternatePhone"
+                  control={control}
+                  label="Alternate Phone Number"
+                  errors={errors}
+                  required={true}
+                  id="phoneNumber"
+                  variant="outlined"
+                />
+              </Grid>
+
+              <Grid item xs={6}>
                 <FormInputText
                   name="postalCode"
                   control={control}

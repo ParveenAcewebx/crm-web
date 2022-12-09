@@ -4,20 +4,22 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import React from 'react';
 import { Controller } from 'react-hook-form';
-
+import { FormInputProps } from './FormInputProps';
 
 const FormBasicDatePicker = ({
   name,
   control,
   label,
   inputFormat,
-}: any) => {
+  className,
+  defaultValue
+}: FormInputProps) => {
   return (
     <>
       <Controller
         name={name}
         control={control}
-        defaultValue={''}
+        defaultValue={defaultValue}
         render={({ field: { onChange, value } }) => (
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
@@ -26,7 +28,7 @@ const FormBasicDatePicker = ({
               value={value || null}
               onChange={(newValue) => onChange(newValue.format('YYYY-MM-DD'))}
               renderInput={(params) => (
-                <TextField onKeyDown={(e) => e.preventDefault()} {...params} />
+                <TextField onKeyDown={(e) => e.preventDefault()} {...params} className={className}/>
               )}
             />
           </LocalizationProvider>

@@ -1,4 +1,5 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
+import Link from "next/link";
 
 export default function LeadAddHeader() {
   return (
@@ -6,7 +7,9 @@ export default function LeadAddHeader() {
       sx={{ display: 'flex', justifyContent: 'space-between' }}
     >
       <Typography variant="h6">{'All Leads'}</Typography>
-     
+      <Link href='/leads/add'><Button variant="contained">Add New Lead</Button></Link>
     </Box>
+
+    
   );
 }
