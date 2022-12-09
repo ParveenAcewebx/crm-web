@@ -22,23 +22,22 @@ function AuthContextProvider({
 
   const logOut = () => {
     localStorage.removeItem("userDetailsStorage");
-    setAuthValue({})
+    setAuthValue({});
   };
+
+
 
   const isLogin = () => {
-    if (Object.keys(authValue).length > 0) {
-      return true;
-    } else {
-      return false;
+    if (typeof window !== "undefined") {
+      const userDetails = localStorage.getItem("userDetailsStorage") || "";
+      if (userDetails !== "") {
+        return true;
+      } else {
+        return false;
+      }
     }
   };
 
-  useEffect(() => {
-    const userDetails = localStorage.getItem("userDetailsStorage") || ""
-    if (Object.keys(userDetails).length > 0) {
-      setAuthValue(userDetails);
-    }
-  }, [authValue]);
   const contextValue = useMemo(
     () => ({
       authValue,
@@ -47,7 +46,7 @@ function AuthContextProvider({
       isLogin,
       ...value,
     }),
-    [value, authValue, isLogin]
+    [value, authValue]
   );
 
   return (

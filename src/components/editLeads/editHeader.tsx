@@ -24,7 +24,7 @@ const LeadEditHeader = () => {
     alternatePhone:"123456789",
     country:"country",
     arrivalDate:"2022-12-08",
-    arrivalTime:"03:05",
+    arrivalTime:new Date('2022-12-12 11:13:58'),
     leadType:"facebook",
     departureDate:"2022-12-12",
     dropLocation:"Brampton",
@@ -70,5 +70,4 @@ const LeadEditHeader = () => {
     </>
   );
 };
-
 export default LeadEditHeader;

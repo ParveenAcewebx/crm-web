@@ -1,19 +1,17 @@
 import * as React from 'react';
-import { Dayjs } from 'dayjs';
 import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { Controller } from 'react-hook-form';
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-
+import { FormInputProps } from './FormInputProps';
 
 const FormBasicTimePicker = ({
   name, 
   control, 
   label,
-}: any) => {
-
+  className
+}: FormInputProps) => {
 
   return (
     <>
@@ -21,15 +19,16 @@ const FormBasicTimePicker = ({
         <Controller
           name={name}
           control={control}
-          // defaultValue={''}
+          defaultValue={''}
           render={({  field: { onChange, value } }) =>  ( 
               <TimePicker
+                inputFormat='HH:mm:ss A'
                 label={label}
                 value={value || null}
-                onChange={(newValue) =>  onChange(newValue.format('HH:mm:ss'))}
+                onChange={(e)=>onChange(e) }
                 renderInput={(params) => {
                   return (
-                  <TextField onKeyDown={(e) => e.preventDefault()} {...params} />
+                  <TextField  {...params} className={className} />
                   )
                 }}
               />

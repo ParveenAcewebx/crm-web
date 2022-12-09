@@ -6,10 +6,7 @@ import { FormProvider } from 'react-hook-form';
 import { useFormContext } from 'react-hook-form';
 import FormBasicDatePicker from '../formInputs/FormBasicDatePicker';
 import FormInputDropdown from '../formInputs/FormInputDropdown';
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-import TextField from "@mui/material/TextField";
+import FormBasicTimePicker from '../formInputs/FormBasicTimePicker';
 
 const carType = [
   { label: "Sudan", value: "sudan" },
@@ -51,15 +48,14 @@ const TravelInfo = () => {
             </Grid>
 
             <Grid item xs={6}>
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <TimePicker
-                  className="w-full"
-                  label="Arrival Time"
-                  value={time}
-                  onChange={handleChange}
-                  renderInput={(params) => <TextField {...params} />}
-                />
-              </LocalizationProvider>
+              <FormBasicTimePicker
+                name={"arrivalTime"}
+                control={control}
+                label={"Arrival Time"}
+                required={true}
+                errors={errors}
+                className="w-full"
+              />
             </Grid>
 
               <Grid item xs={6}>
