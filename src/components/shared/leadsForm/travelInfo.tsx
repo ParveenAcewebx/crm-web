@@ -13,6 +13,32 @@ const carType = [
   { label: "SUV", value: "suv" },
 ];
 
+const leadAssign = [
+  { label: "Johan", value: "Johan" },
+  { label: "Walker", value: "Walker" },
+  { label: "Andrue", value: "Andrue" },
+  { label: "Chris", value: "Chris" },
+];
+
+const leadStatus = [
+  { label: "Not Connected", value: "notConnected" },
+  { label: "Process", value: "process" },
+  { label: "Completed", value: "completed" },
+  { label: "Process", value: "process" },
+];
+
+const currentStatus = [
+  { label: "Sent SMS to customer", value: "smsToCustomer" },
+  { label: "Sent Email to customer", value: "emailtoCustomer" },
+  { label: "Phone Call to Customer", value: "calltoCustomer" },
+  { label: "Call from Customer", value: "callFromCutomer" },
+];
+
+const nextStep = [
+  { label: "Visit", value: "visit" },
+  { label: "Postponed", value: "postponed" },
+];
+
 const TravelInfo = () => {
 
   const [time, setTime] = React.useState<any>(null);
@@ -32,7 +58,7 @@ const TravelInfo = () => {
   return (
     <>
       <FormProvider {...methods}>
-        <Box className='container mx-auto '>
+        <Box className='container mx-auto mb-36'>
           <Grid container spacing={3}>
           <Grid item xs={6}>
               <FormBasicDatePicker
@@ -119,6 +145,63 @@ const TravelInfo = () => {
                 data={carType}
                 required={true}
                 errors={errors}
+              />
+            </Grid>
+
+            <Grid item xs={6}>
+              <FormInputDropdown
+                name={"leadStatus"}
+                control={control}
+                label={"Lead Status"}
+                data={leadStatus}
+                required={true}
+                errors={errors}
+              />
+            </Grid>
+
+            <Grid item xs={6}>
+              <FormInputDropdown
+                name={"leadAssign"}
+                control={control}
+                label={"Lead Assign"}
+                data={leadAssign}
+                required={true}
+                errors={errors}
+              />
+            </Grid>
+
+            <Grid item xs={6}>
+              <FormInputDropdown
+                name={"currentStatus"}
+                control={control}
+                label={"Current Status"}
+                data={currentStatus}
+                required={true}
+                errors={errors}
+              />
+            </Grid>
+
+            <Grid item xs={6}>
+              <FormInputDropdown
+                name={"nextStep"}
+                control={control}
+                label={"Next Step"}
+                data={nextStep}
+                required={true}
+                errors={errors}
+              />
+            </Grid>
+
+            <Grid item xs={6}>
+              <FormBasicDatePicker
+                name="nextStepdate"
+                control={control}
+                label="next Step Date"
+                required={true}
+                errors={errors}
+                inputFormat={"YYYY-MM-DD"}
+                defaultValue=""
+                className="w-full"
               />
             </Grid>
 

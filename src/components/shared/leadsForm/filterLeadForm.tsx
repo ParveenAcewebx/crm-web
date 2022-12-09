@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import FormBasicDatePicker from "../formInputs/FormBasicDatePicker";
 import FormInputDropdown from "../formInputs/FormInputDropdown";
-import { FormInputText } from "../formInputs/FormInputText";
 import moment from "moment";
 
 const status = [
@@ -32,8 +31,8 @@ const FilterLeadForm = (props: any) => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Grid container spacing={3} className=" justify-between px-6 mb-6">
-          <Grid className="w-44">
+        <Grid container spacing={3} className=" justify-between  mb-6">
+          <Grid item xs={3}>
             <FormBasicDatePicker
               name="startDate"
               control={control}
@@ -42,10 +41,11 @@ const FilterLeadForm = (props: any) => {
               errors={errors}
               inputFormat={"YYYY-MM-DD"}
               defaultValue={startOfMonth}
+              className='w-full'
             />
           </Grid>
 
-          <Grid className="w-44">
+          <Grid item xs={4}>
             <FormBasicDatePicker
               name="endDate"
               control={control}
@@ -54,10 +54,11 @@ const FilterLeadForm = (props: any) => {
               errors={errors}
               inputFormat={"YYYY-MM-DD"}
               defaultValue={endOfMonth}
+              className='w-full'
             />
           </Grid>
 
-          <Grid className="w-44">
+          <Grid item xs={3}>
             <FormInputDropdown
               name={"status"}
               control={control}
@@ -67,17 +68,10 @@ const FilterLeadForm = (props: any) => {
               errors={errors}
             />
           </Grid>
-          <Grid className="w-44">
-            <FormInputText
-              name="counrty"
-              control={control}
-              label="Country Name"
-              errors={errors}
-            />
-          </Grid>
-          <Grid>
+
+          <Grid item xs={2}>
             <Button
-              className="w-full py-4"
+              className="w-full py-4 h-14"
               size="medium"
               variant="contained"
               type="submit"

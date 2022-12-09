@@ -20,7 +20,7 @@ export default function LeadAddHeader() {
   
   return (
     <Box sx={{ display: 'flex', justifyContent: 'space-between' }} >
-      <Typography variant="h6">{'Leads'}</Typography>
+      <Typography variant="h5">{'Add Lead'}</Typography>
       <Button variant="contained" onClick={handleSaveLead}  disabled={!dirtyFields || !isValid}>Save</Button>
     </Box>
   );

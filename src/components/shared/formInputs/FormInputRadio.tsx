@@ -4,6 +4,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import Typography from '@mui/material/Typography';
 import React from 'react';
 import { Controller } from 'react-hook-form';
+import { FormInputProps } from './FormInputProps';
 
 
 const FormInputRadio = ({
@@ -12,7 +13,7 @@ const FormInputRadio = ({
   label,
   className,
   data,
-}: any) => {
+}: FormInputProps) => {
   const generateRadioOptions = () => {
     return data.map((singleOption: any) => (
       <React.Fragment key={singleOption.label}>

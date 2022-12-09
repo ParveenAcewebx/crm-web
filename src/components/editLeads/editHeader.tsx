@@ -58,7 +58,7 @@ const LeadEditHeader = () => {
   return (
     <>
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Typography variant="h6">{"Edit Leads"}</Typography>
+        <Typography variant="h5">{"Edit Leads"}</Typography>
         <Button
           variant="contained"
           onClick={updatedLead}

@@ -43,7 +43,7 @@ export default function LoginPage() {
       data.email === "test12@gmail.com" && data.password === "test123456"
     ) {
       localStorage.setItem("userDetailsStorage", JSON.stringify(data));
-      successMsg("You are login successfully");
+      successMsg("You have successfully  logged in");
       route.push("/leads/lists/");
     } else {
       errorMsg("email & password not match in database");
@@ -73,10 +73,10 @@ export default function LoginPage() {
 
   if (!isLoggedIn) {
     return (
-      <main>
-        <form onSubmit={handleSubmit(onSubmit)}>
+      <>
+        <form onSubmit={handleSubmit(onSubmit)} className="h-full">
           <Sheet
-            className="mt-28 border-stone-300"
+            className="mt-28 border-stone-300 bg-white"
             sx={{
               width: 400,
               mx: "auto",
@@ -87,6 +87,7 @@ export default function LoginPage() {
               flexDirection: "column",
               gap: 2,
               borderRadius: "sm",
+              
             }}
             variant="outlined"
           >
@@ -130,7 +131,7 @@ export default function LoginPage() {
             </Typography>
           </Sheet>
         </form>
-      </main>
+      </>
     );
   }
 }

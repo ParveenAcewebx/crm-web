@@ -6,7 +6,7 @@ export default function LeadAddHeader() {
     <Box
       sx={{ display: 'flex', justifyContent: 'space-between' }}
     >
-      <Typography variant="h6">{'All Leads'}</Typography>
+      <Typography variant="h5">{'All Leads'}</Typography>
       <Link href='/leads/add'><Button variant="contained">Add New Lead</Button></Link>
     </Box>
 

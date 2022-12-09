@@ -2,6 +2,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import React from 'react';
 import { Controller } from 'react-hook-form';
+import { FormInputProps } from './FormInputProps';
 
 
 const FormInputTagMultiSelect = ({
@@ -12,7 +13,7 @@ const FormInputTagMultiSelect = ({
   data, 
   required,
   errors,
-}: any) => {
+}: FormInputProps) => {
   return (
     <Controller
       name={name}

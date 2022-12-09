@@ -5,7 +5,6 @@ import Layout from "../../src/Layout/layout";
 import Box from "@mui/material/Box";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Button } from "@mui/material";
 import Link from "next/link";
 import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
@@ -28,28 +27,33 @@ const Leadlists = () => {
     fetchData();
   }, []);
   const columns: GridColDef[] = [
-    { field: "name", headerName: "Name", width: 190 },
-    { field: "email", headerName: "Email", width: 190 },
+    {
+      field: "name",
+      headerName: "Name",
+      flex: 1,
+      headerClassName: "super-app-theme--header",
+    },
+    { field: "email", headerName: "Email", flex: 1 },
     {
       field: "address",
       headerName: "Address",
-      width: 190,
+      flex: 1,
       renderCell: (params) => {
         return params.formattedValue.city;
       },
     },
-    { field: "phone", headerName: "Phone", width: 190 },
+    { field: "phone", headerName: "Phone", flex: 1 },
     {
       field: "action",
       headerName: "Action",
-      width: 150,
+      flex: 1,
       sortable: false,
       filterable: false,
       hideable: false,
       renderCell: (params) => {
         const actions = (
           <>
-            <ul className="flex list-none flex-row space-x-4 text-sky-600">
+            <ul className="flex list-none flex-row space-x-4 text-sky-600 p-0">
               <li>
                 <Link href={`/leads/view/${params.row.id}`}>
                   <VisibilityOutlinedIcon />
@@ -88,7 +92,7 @@ const Leadlists = () => {
             columns={columns}
             pageSize={10}
             rowsPerPageOptions={[10]}
-            checkboxSelection
+            // checkboxSelection
             disableSelectionOnClick
           />
         </div>
