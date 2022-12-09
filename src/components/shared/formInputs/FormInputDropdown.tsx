@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 import React from 'react';
 import { Controller } from 'react-hook-form';
 
+import { FormInputProps } from './FormInputProps';
 
 const FormInputDropdown = ({
   name,
@@ -13,7 +14,7 @@ const FormInputDropdown = ({
   required,
   className,
   defaultValue,
-}: any) => {
+}: FormInputProps) => {
   const generateSelectOptions = () => {
     return data.map((option: any) => (
       <MenuItem key={option.value} value={option.value}>

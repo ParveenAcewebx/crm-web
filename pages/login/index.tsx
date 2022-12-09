@@ -40,8 +40,7 @@ export default function LoginPage() {
 
   const onSubmit: SubmitHandler<any> = async (data, e: any) => {
     if (
-      data.email === "test12@gmail.com" ||
-      data.password.length === "test123456"
+      data.email === "test12@gmail.com" && data.password === "test123456"
     ) {
       localStorage.setItem("userDetailsStorage", JSON.stringify(data));
       successMsg("You are login successfully");

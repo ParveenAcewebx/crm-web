@@ -4,7 +4,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import React from 'react';
 import { Controller } from 'react-hook-form';
-
+import { FormInputProps } from './FormInputProps';
 
 const FormBasicDatePicker = ({
   name,
@@ -13,7 +13,7 @@ const FormBasicDatePicker = ({
   inputFormat,
   className,
   defaultValue
-}: any) => {
+}: FormInputProps) => {
   return (
     <>
       <Controller

@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import React from 'react';
 import { Controller } from 'react-hook-form';
 
-
+import { FormInputProps } from './FormInputProps';
 export const FormInputText = ({
   name,
   control,
@@ -12,7 +12,7 @@ export const FormInputText = ({
   errors,
   inputType,
   required,
-}: any) => {
+}: FormInputProps) => {
   return (
     <div className={className}>
       <Controller
