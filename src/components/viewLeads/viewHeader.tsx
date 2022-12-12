@@ -5,7 +5,7 @@ import Router from 'next/router'
 const ViewHeader = () => {
   return (
     <div>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between' }} >
+        <Box sx={{ display: 'flex', justifyContent: 'space-between',  alignItems:'center' }} >
             <Typography variant="h6">{'View Leads'}</Typography>
             <Button variant="contained" onClick={() => Router.back()}>Back</Button>
         </Box>

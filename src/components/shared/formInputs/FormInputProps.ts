@@ -18,4 +18,5 @@ export interface FormInputProps {
   variant?: any;
   defaultValue?:any;
   disablePast?:any;
+  textareaHeight?:any
 }

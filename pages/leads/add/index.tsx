@@ -1,14 +1,7 @@
 import Box from "@mui/material/Box";
-import { Grid } from "@mui/material";
-import { FormInputText } from "../../../src/components/shared/formInputs/FormInputText";
-import { PhoneNumber } from "../../../src/components/shared/formInputs/PhoneNumber";
-import type { SubmitHandler } from "react-hook-form";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { leadFormSchema } from "../../../src/components/shared/leadFormValidation";
-import FormControl from "@mui/material/FormControl";
-import { Button } from "@mui/material";
-import FormBasicDatePicker from "../../../src/components/shared/formInputs/FormBasicDatePicker";
 import LeadAddHeader from "./header";
 import Layout from "../../../src/Layout/layout";
 import BasicInfo from "../../../src/components/shared/leadsForm/basicInfo";
@@ -19,6 +12,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import { useState } from "react";
 import ContactInfo from "../../../src/components/shared/leadsForm/contactInfo";
 import TravelInfo from "../../../src/components/shared/leadsForm/travelInfo";
+import CurrentStatusTab from "../../../src/components/shared/leadsForm/currentStatus";
 const LeadForm = () => {
   const defaultValues = {
     firstName: "",
@@ -62,6 +56,7 @@ const LeadForm = () => {
                   <Tab label="Basic Info" value="1" />
                   <Tab label="Contact Info" value="2" />
                   <Tab label="Travel Info" value="3" />
+                  <Tab label="Current Status / Next Steps" value="4" />
                 </TabList>
               </Box>
               <TabPanel value="1">
@@ -72,6 +67,10 @@ const LeadForm = () => {
               </TabPanel>
               <TabPanel value="3">
                 <TravelInfo />
+              </TabPanel>
+
+              <TabPanel value="4">
+                <CurrentStatusTab/>
               </TabPanel>
             </TabContext>
           </Box>

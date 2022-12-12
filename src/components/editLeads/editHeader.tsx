@@ -32,7 +32,10 @@ const LeadEditHeader = () => {
     city:"demo",
     postalCode:"12345",
     state:"demo12",
-    carType:"sudan"
+    carType:"sudan",
+    currentStatusDetails:"test",
+    nextStepDetails:"test2",
+    notes:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
   }
   const fetchData = async () => {
     try {
@@ -57,7 +60,7 @@ const LeadEditHeader = () => {
   };
   return (
     <>
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems:'center' }}>
         <Typography variant="h5">{"Edit Leads"}</Typography>
         <Button
           variant="contained"

@@ -27,17 +27,6 @@ const leadStatus = [
   { label: "Process", value: "process" },
 ];
 
-const currentStatus = [
-  { label: "Sent SMS to customer", value: "smsToCustomer" },
-  { label: "Sent Email to customer", value: "emailtoCustomer" },
-  { label: "Phone Call to Customer", value: "calltoCustomer" },
-  { label: "Call from Customer", value: "callFromCutomer" },
-];
-
-const nextStep = [
-  { label: "Visit", value: "visit" },
-  { label: "Postponed", value: "postponed" },
-];
 
 const TravelInfo = () => {
 
@@ -45,6 +34,7 @@ const TravelInfo = () => {
   const methods = useFormContext();
   const { control, formState , setValue} = methods;
   const { errors } = formState;
+  
   const handleChange = (newValue: any | null) => {
     setTime(newValue);
   };
@@ -159,6 +149,8 @@ const TravelInfo = () => {
               />
             </Grid>
 
+ 
+
             <Grid item xs={6}>
               <FormInputDropdown
                 name={"leadAssign"}
@@ -169,42 +161,6 @@ const TravelInfo = () => {
                 errors={errors}
               />
             </Grid>
-
-            <Grid item xs={6}>
-              <FormInputDropdown
-                name={"currentStatus"}
-                control={control}
-                label={"Current Status"}
-                data={currentStatus}
-                required={true}
-                errors={errors}
-              />
-            </Grid>
-
-            <Grid item xs={6}>
-              <FormInputDropdown
-                name={"nextStep"}
-                control={control}
-                label={"Next Step"}
-                data={nextStep}
-                required={true}
-                errors={errors}
-              />
-            </Grid>
-
-            <Grid item xs={6}>
-              <FormBasicDatePicker
-                name="nextStepdate"
-                control={control}
-                label="next Step Date"
-                required={true}
-                errors={errors}
-                inputFormat={"YYYY-MM-DD"}
-                defaultValue=""
-                className="w-full"
-              />
-            </Grid>
-
           </Grid>
         </Box>
         </FormProvider>
