@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../../Layout/layout";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Grid } from "@mui/material";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { errorMsg } from "../shared/toaster-msg/error-msg";
@@ -47,66 +47,20 @@ const LeadView = () => {
   return (
     <div>
       <Layout commonHeader={<ViewHeader />}>
-        <Box className="h-56 grid grid-cols-2 gap-4">
-          <Box className="shadow-lg shadow-slate-300 bg-gray-100">
-            <Box className="">
-              <Typography
-                className="pl-5 py-5  border-slate-300 border-solid border-l-0 border-r-0 border-t-0 border-b-2"
-                variant="h6"
-              >
-                {"Details"}
-              </Typography>
-
-              <Box className="grid grid-cols-2 gap-4 text-center py-5">
-                <Typography>{'FirstName'}</Typography>
-                <Typography>{data.firstName}</Typography>
-              </Box>
-
-              <Box className="grid grid-cols-2 gap-4 text-center py-5">
-                <Typography>{'LastName'}</Typography>
-                <Typography>{data.lastName}</Typography>
-              </Box>
-
-              <Box className="grid grid-cols-2 gap-4 text-center py-5">
-                <Typography>{'Country'}</Typography>
-                <Typography>{data.country}</Typography>
-              </Box>
-
-              <Box className="grid grid-cols-2 gap-4 text-center py-5">
-                <Typography>{'City'}</Typography>
-                <Typography>{data.city}</Typography>
-              </Box>
-            </Box>
-          </Box>
-          <Box className="shadow-lg shadow-slate-300 bg-gray-100">
-            <Typography
-              className="pl-5 py-5  border-slate-300 border-solid border-l-0 border-r-0 border-t-0 border-b-2"
-              variant="h6"
-            >
-              {"Contact Details"}
-            </Typography>
-
-            <Box className="grid grid-cols-2 gap-4 text-center py-5">
-                <Typography>{'FirstName'}</Typography>
-                <Typography>{data.email}</Typography>
-              </Box>
-
-              <Box className="grid grid-cols-2 gap-4 text-center py-5">
-                <Typography>{'LastName'}</Typography>
-                <Typography>{data.phoneNumber}</Typography>
-              </Box>
-
-              <Box className="grid grid-cols-2 gap-4 text-center py-5">
-                <Typography>{'Country'}</Typography>
-                <Typography>{data.country}</Typography>
-              </Box>
-
-              <Box className="grid grid-cols-2 gap-4 text-center py-5">
-                <Typography>{'City'}</Typography>
-                <Typography>{data.city}</Typography>
-              </Box>
-          </Box>
-        </Box>
+        <Grid container spacing={2}>
+          <Grid className="border-solid border-2" item xs={8}>
+            <div className="mb-8 text-center">xs=8</div>
+          </Grid>
+          <Grid className="border-solid border-2" item xs={4}>
+            <div className="mb-8 text-center">xs=4</div>
+          </Grid>
+          <Grid className="border-solid border-2" item xs={4}>
+            <div className="mb-8 text-center">xs=4</div>
+          </Grid>
+          <Grid className="border-solid border-2" item xs={8}>
+            <div className="mb-8 text-center">xs=8</div>
+          </Grid>
+        </Grid>
       </Layout>
     </div>
   );
