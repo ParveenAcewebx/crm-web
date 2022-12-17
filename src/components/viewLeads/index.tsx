@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../../Layout/layout";
-import { Box, Typography, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { errorMsg } from "../shared/toaster-msg/error-msg";
@@ -27,38 +27,31 @@ const LeadView = () => {
   const router = useRouter();
   const { viewId } = router.query;
 
-  const [getData, setGetData] = useState();
+  // const [getData, setGetData] = useState();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `http://jsonplaceholder.typicode.com/posts/${viewId}`
-        );
-        setGetData(response.data);
-      } catch (err: any) {
-        errorMsg(err.message);
-      }
-    };
-
-    fetchData();
-  }, [viewId]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         `http://jsonplaceholder.typicode.com/posts/${viewId}`
+  //       );
+  //       setGetData(response.data);
+  //     } catch (err: any) {
+  //       errorMsg(err.message);
+  //     }
+  //   };
+  //   fetchData();
+  // }, [viewId]);
 
   return (
     <div>
       <Layout commonHeader={<ViewHeader />}>
         <Grid container spacing={2}>
-          <Grid className="border-solid border-2" item xs={8}>
-            <div className="mb-8 text-center">xs=8</div>
+          <Grid className="border-solid border-2" item xs={6}>
+            <div className="mb-8">Lead details</div>
           </Grid>
-          <Grid className="border-solid border-2" item xs={4}>
-            <div className="mb-8 text-center">xs=4</div>
-          </Grid>
-          <Grid className="border-solid border-2" item xs={4}>
-            <div className="mb-8 text-center">xs=4</div>
-          </Grid>
-          <Grid className="border-solid border-2" item xs={8}>
-            <div className="mb-8 text-center">xs=8</div>
+          <Grid className="border-solid border-2" item xs={6}>
+            <div className="mb-8">Note</div>
           </Grid>
         </Grid>
       </Layout>

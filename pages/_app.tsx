@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
     return (
       <>
         <AuthContextProvider>
-          <ToastContainer />
+          {/* <ToastContainer /> */}
           <Component {...pageProps} />
         </AuthContextProvider>
       </>
