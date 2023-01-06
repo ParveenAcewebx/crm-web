@@ -5,10 +5,14 @@ module.exports = {
   },
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,css}",
-    "./src/Layout/**/*.{js,ts,jsx,tsx,css}",
+    "./src/**/*.{js,ts,jsx,tsx,css}",
   ],
   theme: {
-    extend: {},
-  },
+    extend: {
+      spacing: {
+        '150': '41rem',
+      }
+    },
+  }, 
   plugins: [],
 };

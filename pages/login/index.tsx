@@ -16,8 +16,12 @@ import {
   successMsg,
 } from "../../src/components/shared/toaster-msg/error-msg";
 import { useRouter } from "next/router";
+import { LoginContext } from "../../src/contexts/AuthContext";
+import { LoginContextTye } from "../../src/types/auth";
 
 export default function LoginPage() {
+  const { isLogin } = React.useContext(LoginContext) as LoginContextTye;
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const route = useRouter();
 
   const defaultValues = {
@@ -32,19 +36,31 @@ export default function LoginPage() {
     });
 
   const { isValid, dirtyFields, errors } = formState;
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<any> = async (data, e: any) => {
     if (
-      data.email === "test12@gmail.com" ||
-      data.password.length === "test123456"
+      data.email === "test12@gmail.com" && data.password === "test123456"
     ) {
-      successMsg("You are login successfully");
+      localStorage.setItem("userDetailsStorage", JSON.stringify(data));
+      successMsg("You have successfully  logged in");
       route.push("/leads/lists/");
     } else {
       errorMsg("email & password not match in database");
     }
   };
   React.useEffect(() => {
+    if (isLogin()) {
+      setIsLoggedIn(true);
+      router.push("/leads/lists/");
+    } else {
+      router.push("/login");
+    }
+
+    const userDetails = localStorage.getItem("userDetailsStorage") || "";
+    if (userDetails !== "") {
+      route.push("/leads/lists");
+    }
     setValue("email", "test12@gmail.com", {
       shouldDirty: true,
       shouldValidate: true,
@@ -55,64 +71,67 @@ export default function LoginPage() {
     });
   }, [reset, setValue, trigger]);
 
-  return (
-    <main>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Sheet
-          className="mt-28 border-stone-300"
-          sx={{
-            width: 400,
-            mx: "auto",
-            my: 5,
-            py: 3,
-            px: 2,
-            display: "flex",
-            flexDirection: "column",
-            gap: 2,
-            borderRadius: "sm",
-          }}
-          variant="outlined"
-        >
-          <div>
-            <Typography level="h4" component="h1">
-              <b>Welcome!</b>
+  if (!isLoggedIn) {
+    return (
+      <>
+        <form onSubmit={handleSubmit(onSubmit)} className="h-full">
+          <Sheet
+            className="mt-28 border-stone-300 bg-white"
+            sx={{
+              width: 400,
+              mx: "auto",
+              my: 5,
+              py: 3,
+              px: 2,
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+              borderRadius: "sm",
+              
+            }}
+            variant="outlined"
+          >
+            <div>
+              <Typography level="h4" component="h1">
+                <b>Welcome!</b>
+              </Typography>
+              <Typography level="body2">Sign in to continue.</Typography>
+            </div>
+
+            <FormInputText
+              name="email"
+              control={control}
+              label="Email "
+              required={true}
+              errors={errors}
+            />
+
+            <FormInputText
+              name="password"
+              control={control}
+              label="Password "
+              required={true}
+              errors={errors}
+              inputType="password"
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              disabled={_.isEmpty(dirtyFields) || !isValid}
+            >
+              Log in
+            </Button>
+
+            <Typography
+              endDecorator={<Link href="#">Sign up</Link>}
+              fontSize="sm"
+              sx={{ alignSelf: "center" }}
+            >
+              Don&apos;t have an account?
             </Typography>
-            <Typography level="body2">Sign in to continue.</Typography>
-          </div>
-
-          <FormInputText
-            name="email"
-            control={control}
-            label="Email "
-            required={true}
-            errors={errors}
-          />
-
-          <FormInputText
-            name="password"
-            control={control}
-            label="Password "
-            required={true}
-            errors={errors}
-            inputType="password"
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            disabled={_.isEmpty(dirtyFields) || !isValid}
-          >
-            Log in
-          </Button>
-
-          <Typography
-            endDecorator={<Link href="#">Sign up</Link>}
-            fontSize="sm"
-            sx={{ alignSelf: "center" }}
-          >
-            Don&apos;t have an account?
-          </Typography>
-        </Sheet>
-      </form>
-    </main>
-  );
+          </Sheet>
+        </form>
+      </>
+    );
+  }
 }
