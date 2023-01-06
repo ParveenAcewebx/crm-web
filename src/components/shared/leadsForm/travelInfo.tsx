@@ -13,12 +13,28 @@ const carType = [
   { label: "SUV", value: "suv" },
 ];
 
+const leadAssign = [
+  { label: "Johan", value: "Johan" },
+  { label: "Walker", value: "Walker" },
+  { label: "Andrue", value: "Andrue" },
+  { label: "Chris", value: "Chris" },
+];
+
+const leadStatus = [
+  { label: "Not Connected", value: "notConnected" },
+  { label: "Process", value: "process" },
+  { label: "Completed", value: "completed" },
+  { label: "Process", value: "process" },
+];
+
+
 const TravelInfo = () => {
 
   const [time, setTime] = React.useState<any>(null);
   const methods = useFormContext();
   const { control, formState , setValue} = methods;
   const { errors } = formState;
+  
   const handleChange = (newValue: any | null) => {
     setTime(newValue);
   };
@@ -32,7 +48,7 @@ const TravelInfo = () => {
   return (
     <>
       <FormProvider {...methods}>
-        <Box className='container mx-auto '>
+        <Box className='container mx-auto mb-36'>
           <Grid container spacing={3}>
           <Grid item xs={6}>
               <FormBasicDatePicker
@@ -122,6 +138,29 @@ const TravelInfo = () => {
               />
             </Grid>
 
+            <Grid item xs={6}>
+              <FormInputDropdown
+                name={"leadStatus"}
+                control={control}
+                label={"Lead Status"}
+                data={leadStatus}
+                required={true}
+                errors={errors}
+              />
+            </Grid>
+
+ 
+
+            <Grid item xs={6}>
+              <FormInputDropdown
+                name={"leadAssign"}
+                control={control}
+                label={"Lead Assign"}
+                data={leadAssign}
+                required={true}
+                errors={errors}
+              />
+            </Grid>
           </Grid>
         </Box>
         </FormProvider>

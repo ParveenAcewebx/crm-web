@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import { Grid } from "@mui/material";
 import { FormInputText } from "../formInputs/FormInputText";
 import FormInputDropdown from "../formInputs/FormInputDropdown";
+import { FormTextarea } from "../formInputs/FormInputTextarea";
 
 const leadType = [
   { label: "FaceBook", value: "facebook" },
@@ -65,6 +66,17 @@ const BasicInfo = () => {
                 data={leadType}
                 required={true}
                 errors={errors}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <FormTextarea
+                 name="notes"
+                 control={control}
+                 label="Notes"
+                 errors={errors}
+                //  required={true}
+                 className="w-full"
+                 textareaHeight={4}
               />
             </Grid>
           </Grid>

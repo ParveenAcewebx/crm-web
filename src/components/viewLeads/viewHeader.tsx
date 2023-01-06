@@ -13,31 +13,9 @@ const ViewHeader = () => {
   const onSubmit: SubmitHandler<any> = async (data, e: any) => {};
   return (
     <div>
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Button variant="contained" onClick={() => Router.back()}>
-          <ArrowCircleLeftIcon className="mr-2" />
-          Back
-        </Button>
-        <Typography variant="h6">{"View Leads"}</Typography>
-        <Box className="">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Grid container>
-              <Grid sx={{ minWidth: 100 }}>
-                <FormInputDropdown
-                  name={"status"}
-                  control={control}
-                  label={"Status"}
-                  data={status}
-                  defaultValue=""
-                />
-              </Grid>
-              <Grid>
-                <Button size="small" variant="contained" type="submit">
-                  {"Search"}
-                </Button>
-              </Grid>
-            </Grid>
-          </form>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between',  alignItems:'center' }} >
+            <Typography variant="h6">{'View Leads'}</Typography>
+            <Button variant="contained" onClick={() => Router.back()}>Back</Button>
         </Box>
       </Box>
     </div>

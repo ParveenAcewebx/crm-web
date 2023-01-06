@@ -34,6 +34,7 @@ export default function Layout({ children, commonHeader }: LayoutProps) {
             boxSizing: "border-box",
           },
         }}
+        className='shadow-lg'
       >
         <Toolbar />
 
@@ -54,10 +55,10 @@ export default function Layout({ children, commonHeader }: LayoutProps) {
           </List>
         </Box>
       </Drawer>
-      <Box className="w-full">
-        <div className="bg-gray-200 mt-20 w-full py-4 px-4">{commonHeader}</div>
+      <Box className="w-full px-7">
+        <div className="mt-20 w-full py-4 items-center">{commonHeader}</div>
         <Box
-          className="wrapper bg-white w-full"
+          className="wrapper bg-white w-full shadow-rose-900"
           component="main"
           sx={{ flexGrow: 1, p: 3 }}
         >

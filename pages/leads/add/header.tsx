@@ -13,14 +13,15 @@ export default function LeadAddHeader() {
   const router  = useRouter()
   const { isValid, dirtyFields } = formState;
   const handleSaveLead = () => {
+    console.log(getValues(), 'getValuesgetValues')
     successMsg('Lead successfully added')
     router.push('/leads/lists')
   }
 
   
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'space-between' }} >
-      <Typography variant="h6">{'Leads'}</Typography>
+    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems:'center' }} >
+      <Typography variant="h5">{'Add Lead'}</Typography>
       <Button variant="contained" onClick={handleSaveLead}  disabled={!dirtyFields || !isValid}>Save</Button>
     </Box>
   );

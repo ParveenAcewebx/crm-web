@@ -4,9 +4,9 @@ import Link from "next/link";
 export default function LeadAddHeader() {
   return (
     <Box
-      sx={{ display: 'flex', justifyContent: 'space-between' }}
+      sx={{ display: 'flex', justifyContent: 'space-between',  alignItems:'center' }}
     >
-      <Typography variant="h6">{'All Leads'}</Typography>
+      <Typography variant="h5">{'All Leads'}</Typography>
       <Link href='/leads/add'><Button variant="contained">Add New Lead</Button></Link>
     </Box>
 

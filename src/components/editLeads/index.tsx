@@ -13,22 +13,22 @@ import BasicInfo from "../shared/leadsForm/basicInfo";
 import ContactInfo from "../shared/leadsForm/contactInfo";
 import TravelInfo from "../shared/leadsForm/travelInfo";
 import { useState } from "react";
+import CurrentStatusTab from "../shared/leadsForm/currentStatus";
 const EditLeadForm = () => {
-  
   const defaultValues = {
     firstName: "",
     lastName: "",
     email: "",
     phoneNumber: "",
-    alternatePhone:"",
-    country:"",
-    arrivalDate:"",
-    arrivalTime:"",
-    leadType:"",
-    departureDate:"",
-    dropLocation:"",
-    numberOftourist:"",
-    carType:""
+    alternatePhone: "",
+    country: "",
+    arrivalDate: "",
+    arrivalTime: "",
+    leadType: "",
+    departureDate: "",
+    dropLocation: "",
+    numberOftourist: "",
+    carType: "",
   };
 
   const methods = useForm<any>({
@@ -56,6 +56,7 @@ const EditLeadForm = () => {
                     <Tab label="Basic Info" value="1" />
                     <Tab label="Contact Info" value="2" />
                     <Tab label="Travel Info" value="3" />
+                    <Tab label="Current Status / Next Steps" value="4" />
                   </TabList>
                 </Box>
                 <TabPanel value="1">
@@ -67,9 +68,12 @@ const EditLeadForm = () => {
                 <TabPanel value="3">
                   <TravelInfo />
                 </TabPanel>
+
+                <TabPanel value="4">
+                  <CurrentStatusTab />
+                </TabPanel>
               </TabContext>
             </Box>
-     
           </Box>
         </Layout>
       </FormProvider>
